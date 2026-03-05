@@ -1,29 +1,28 @@
 package com.example.SpringTest.database;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.data.repository.CrudRepository; // Melhor que apenas 'Repository'
-import java.util.Optional;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Person { // Classe deve ser public
+public class Person { 
 
     @Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // IDENTITY é o padrão para MySQL/PostgreSQL/H2
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    // O JPA exige um construtor vazio (default constructor)
     public Person() {}
 
-    public Person(String name) {
-        this.name = name;
-    }
-
-    // Getters e Setters
+    public Person(String name) { this.name = name; }
     public Long getId() { return id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
+
+    @OneToMany(mappedBy = "person")
+    private List<Car> cars;
 }

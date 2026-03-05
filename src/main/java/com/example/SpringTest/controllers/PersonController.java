@@ -16,12 +16,12 @@ public class PersonController {
     @Autowired
     private IPersonService service;
 
-    @PostMapping
+    @PostMapping("/criar")
     public Person criar(@RequestParam String nome) {
         return service.salvar(nome);
     }
 
-    @GetMapping
+    @GetMapping("/listar-todos")
     public Iterable<Person> listar() {
         return service.listarTodos();
     }
