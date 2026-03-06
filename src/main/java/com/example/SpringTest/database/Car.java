@@ -13,17 +13,17 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String model;
-    private Integer year;
+    private Integer carYear;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", nullable = true)
+    @JoinColumn(name = "person", nullable = true)
     private Person person;
 
     public Car(){
 
     }
 
-    public Car(String model, Integer year){ this.model = model; this.year = year; person = null; }
+    public Car(String model, Integer carYear){ this.model = model; this.carYear = carYear; person = null; }
 
     public Long getId() {
         return id;
@@ -37,12 +37,12 @@ public class Car {
         this.model = model;
     }
 
-    public Integer getYear() {
-        return year;
+    public Integer getCarYear() {
+        return carYear;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setCarYear(Integer carYear) {
+        this.carYear = carYear;
     }
 
     public Person getPerson() {
